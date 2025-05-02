@@ -134,7 +134,22 @@ class Sudoku_AI_Solver:
 if __name__ == "__main__":
     solver = Sudoku_AI_Solver()
     try:
-        solver.load_from_file("sudoku_easy.txt")
+        print("Choose a Sudoku puzzle to solve:")
+        print("1. Easy")
+        print("2. Medium")
+        print("3. Hard")
+        choice = input("Enter the number corresponding to your choice (1,2,3): ").strip()
+
+        if choice == "1":
+            filename = "sudoku_easy.txt"
+        elif choice == "2":
+            filename = "sudoku_medium.txt"
+        elif choice == "3":
+            filename = "sudoku_hard.txt"
+        else:
+            raise ValueError("Invalid choice. Please enter 1, 2, or 3.")
+
+        solver.load_from_file(filename)
         solution = solver.solve()
         if solution:
             print("Solution found:")
