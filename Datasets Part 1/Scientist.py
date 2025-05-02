@@ -61,7 +61,7 @@ def neighbors_for_person(scientist_id):
             if coauthor_id != scientist_id:
                 neighbors.add((paper_id, coauthor_id))
     return neighbors
-
+# Finds the shortest connection path between two scientists using Breadth-First Search (BFS)
 def shortest_path(source, target):
     if source == target:
         return []
@@ -81,6 +81,7 @@ def shortest_path(source, target):
                 queue.append((neighbor, path + [(paper_id, neighbor)]))
     return None
 
+# Resolves a person's name to a unique ID, asks for clarification if multiple matches exist
 def person_id_for_name(name):
     person_ids = list(names.get(name, set()))
     if not person_ids:
@@ -93,6 +94,7 @@ def person_id_for_name(name):
     else:
         return person_ids[0]
 
+# Main driver function for running the scientist connection program
 def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python Scientist.py [directory]")
@@ -127,5 +129,6 @@ def main():
             print(f"{i}: {current_name} and {next_name} co-authored \"{paper['title']}\"")
             current_id = scientist_id
 
+# Run the main function when the script is executed directly
 if __name__ == "__main__":
     main()
